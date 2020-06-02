@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My first React application</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        .todo-item{
+            background-color: rgb(235, 237, 238);
+            border:1px solid black;
+            margin:10px;
+            padding-top:4%;
+            padding-bottom:4%;
+        }
+        .container{
+            width:50%;
+            margin:auto auto;
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script type="text/babel">
+    class App extends React.Component{
+        render(){
+            return(
+                <div id="taskLists">
+                <h1>ToDo List</h1>
+                <TodoItem title="Task 1" description="Solving assignment 1" deadline="31st May 2020"/>
+                <TodoItem title="Task 2" description="Preparation for Exams" deadline="1st June 2020"/>
+                <TodoItem title="Task 3" description="Practice numericals" deadline="3rd June 2020 "/>
+                </div>
+            );
+        }
+   }
+        class TodoItem extends React.Component {
+            render(){
+                return(
+                    <div class="container">
+                    <div className="todo-item">
+                        <h3>{this.props.title}</h3>
+                        <p>{this.props.description}</p>
+                        <p>Deadline:{this.props.deadline}</p>
+                        <button onClick={()=> {this.handleClick();}}>Delete</button>
+                    </div>
+                    </div>
+                );
+            }
+            handleClick() {
+                alert("Button clicked");
+            }
+        }
+        var myElement = document.getElementById("app");
+        ReactDOM.render(<App />, myElement);
+    </script>
+</body>
+</html>
